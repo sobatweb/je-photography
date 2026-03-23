@@ -21,22 +21,21 @@ const Navbar = () => {
   }, [isOpen]);
 
   return (
-    <nav className={`fixed w-full transition-all duration-500 z-[1000] ${
-      scrolled || isOpen ? 'bg-[#1A120B] py-4 shadow-2xl' : 'bg-transparent py-8'
-    }`}>
+    <nav className={`fixed w-full transition-all duration-500 z-[1000] ${scrolled || isOpen ? 'bg-[#1A120B] py-4 shadow-2xl' : 'bg-transparent py-8'
+      }`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
         <a href="#" className="text-xl md:text-2xl font-serif tracking-[0.3em] text-[#DAC0A3] z-[1001]">DEMO</a>
-        
+
         {/* Desktop Nav */}
         <div className="hidden md:flex gap-10">
           {links.map(link => (
-            <a key={link} href={`#${link.toLowerCase()}`} className="text-[10px] uppercase tracking-widest text-[#DAC0A3]/70 hover:text-[#DAC0A3] transition-colors">{link}</a>
+            <a key={link} href={`#${link.toLowerCase()}`} className="text-[12px] uppercase tracking-widest text-[#DAC0A3]/70 hover:text-[#DAC0A3] transition-colors">{link}</a>
           ))}
         </div>
 
         {/* Burger Button */}
-        <button 
-          onClick={() => setIsOpen(!isOpen)} 
+        <button
+          onClick={() => setIsOpen(!isOpen)}
           className="text-[#DAC0A3] md:hidden p-2 z-[1001] relative focus:outline-none"
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
