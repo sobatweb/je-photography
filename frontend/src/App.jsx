@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import Cards from './components/Card';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -18,18 +19,19 @@ function App() {
     // tunggu PreLoader selesai
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 5000); 
+    }, 5000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-   <div>
+    <div>
       <AnimatePresence>
         {isLoading && <PreLoader />}
       </AnimatePresence>
       <main className="bg-[#FDFBF7]">
         <Navbar />
         <Hero />
+        <Cards />
         <About />
         <Gallery />
         <Testimonials />
