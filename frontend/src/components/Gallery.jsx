@@ -38,6 +38,17 @@ const Gallery = () => {
     setShowAll(false);
   }, [active]);
 
+  // Listen for category change from Card.jsx
+  useEffect(() => {
+    const handleCategoryChange = (e) => {
+      if (categories.includes(e.detail)) {
+        setActive(e.detail);
+      }
+    };
+    window.addEventListener('changeGalleryCategory', handleCategoryChange);
+    return () => window.removeEventListener('changeGalleryCategory', handleCategoryChange);
+  }, []);
+
   const displayPhotos = showAll ? galleryData[active] : galleryData[active].slice(0, 8);
 
   return (
