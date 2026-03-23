@@ -28,7 +28,7 @@ function App() {
       <AnimatePresence>
         {isLoading && <PreLoader />}
       </AnimatePresence>
-      <main className="bg-[#FDFBF7]">
+      <main className="bg-[#FDFBF7] overflow-x-hidden">
         <Navbar />
         <Hero />
         <Cards />

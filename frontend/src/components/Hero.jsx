@@ -18,10 +18,10 @@ const Hero = () => {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
+    <section id="home" className="relative min-h-screen w-full flex items-center justify-center bg-black overflow-hidden">
 
       {/* 1. Background Collage Grid (Varied Sizes) */}
-      <div className="absolute inset-0 z-0 grid grid-cols-2 md:grid-cols-4 gap-2 p-2 opacity-80 grayscale contrast-110">
+      <div className="absolute inset-0 z-0 grid grid-cols-2 md:grid-cols-4 gap-2 opacity-80 grayscale contrast-110">
         {collageImages.map((img, index) => (
           <motion.div
             key={index}
@@ -64,7 +64,7 @@ const Hero = () => {
           </div>
 
           {/* Main Title */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-[#F8F0E5] leading-tight tracking-tighter">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif text-[#F8F0E5] leading-tight tracking-tighter">
             CAPTURE <span className="text-[#DAC0A3] italic">THE SOUL</span><br />
             IN SILENCE
           </h1>
