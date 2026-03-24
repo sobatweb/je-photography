@@ -4,11 +4,22 @@ import { MessageCircle, Instagram, Camera, Sparkles, ArrowUpRight } from 'lucide
 import { businessConfig } from '../config/businessConfig';
 
 const Contact = () => {
+  // Fungsi khusus untuk smooth scroll ke footer
+  const handleSmoothScroll = (e, targetId) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId.replace('#', ''));
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Fallback jika id="footer" belum dibuat Nabil, otomatis scroll mentok bawah
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  };
+
   return (
-    // Menggunakan FFF8F0 sebagai base untuk kesan warm & clean
     <section id="contact" className="py-24 md:py-32 px-6 bg-[#FFF8F0] relative overflow-hidden">
       
-      {/* Aesthetic Background Element - Diubah ke tone cokelat (C08552) */}
+      {/* Aesthetic Background Element */}
       <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#C08552]/15 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-[#8C5A3C]/10 rounded-full blur-[100px] pointer-events-none" />
       
@@ -40,16 +51,15 @@ const Contact = () => {
 
             <div className="pt-6 flex justify-center lg:justify-start">
               <motion.a 
-                href="https://instagram.com/demo.studio" // Ganti dengan link IG asli klien
-                target="_blank"
-                rel="noreferrer"
+                href="#footer" 
+                onClick={(e) => handleSmoothScroll(e, '#footer')}
                 whileHover={{ y: -3 }}
-                className="inline-flex items-center gap-4 py-3 px-6 rounded-full border border-[#C08552]/30 bg-white/50 backdrop-blur-sm hover:bg-white hover:border-[#C08552] transition-all shadow-sm group"
+                className="inline-flex items-center gap-4 py-3 px-6 rounded-full border border-[#C08552]/30 bg-white/50 backdrop-blur-sm hover:bg-white hover:border-[#C08552] transition-all shadow-sm group cursor-pointer"
               >
                 <div className="w-8 h-8 rounded-full bg-[#FFF8F0] border border-[#C08552]/20 flex items-center justify-center group-hover:bg-[#C08552] group-hover:text-white transition-colors text-[#8C5A3C]">
                   <Instagram size={14} />
                 </div>
-                <span className="text-[10px] text-[#4B2E2B] uppercase tracking-widest font-bold">Follow @demo.studio</span>
+                <span className="text-[10px] text-[#4B2E2B] uppercase tracking-widest font-bold">Follow My Journey</span>
               </motion.a>
             </div>
           </motion.div>
@@ -60,10 +70,8 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            // Menggunakan warna paling gelap dari palet untuk Card agar pop-up
             className="bg-[#4B2E2B] p-10 md:p-14 rounded-[3rem] shadow-2xl relative overflow-hidden group text-center border border-[#8C5A3C]/20"
           >
-            {/* Ornamen garis halus di dalam card */}
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#C08552] to-transparent opacity-40" />
             <div className="absolute -right-10 -top-10 w-40 h-40 bg-[#8C5A3C]/20 rounded-full blur-3xl"></div>
             
@@ -78,7 +86,6 @@ const Contact = () => {
               </div>
 
               <motion.a
-                // Pastikan config ini mengarah ke link wa.me/ yang benar
                 href={businessConfig?.contact?.whatsapp || "https://wa.me/123456789"} 
                 target="_blank"
                 rel="noreferrer"
@@ -87,19 +94,19 @@ const Contact = () => {
                 className="flex items-center justify-center gap-3 bg-[#C08552] w-full py-5 rounded-2xl text-white font-bold uppercase tracking-[0.15em] text-xs shadow-[0_15px_30px_-10px_rgba(192,133,82,0.5)] transition-all hover:bg-[#8C5A3C]"
               >
                 <MessageCircle size={18} fill="currentColor" className="text-white" />
-                Mulai Konsultasi
+                Chat Whatsapp
                 <ArrowUpRight size={16} className="opacity-70" />
               </motion.a>
               
               <p className="text-[#FFF8F0]/30 text-[9px] uppercase tracking-[0.2em] leading-loose pt-4 border-t border-[#FFF8F0]/10">
-                Klik tombol di atas untuk berdiskusi langsung dengan fotografer kami.
+                Klik tombol di atas untuk berdiskusi langsung dengan kami
               </p>
             </div>
           </motion.div>
 
         </div>
 
-        {/* Location Footer Mini - Disesuaikan warnanya */}
+        {/* Location Footer Mini */}
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
