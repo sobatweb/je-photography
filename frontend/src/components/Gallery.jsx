@@ -1,5 +1,6 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState, memo, useEffect } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { useState, memo, useEffect, useRef } from 'react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import { galleryData } from '../data/GalleryData';
 
 const categories = Object.keys(galleryData);
@@ -33,6 +34,10 @@ const Gallery = () => {
   const [active, setActive] = useState("Food");
   const [showAll, setShowAll] = useState(false);
 
+  // Setup Ref dan InView persis seperti Testimonial
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef);
+
   // Reset ke 8 foto setiap kali ganti kategori
   useEffect(() => {
     setShowAll(false);
@@ -52,7 +57,8 @@ const Gallery = () => {
   const displayPhotos = showAll ? galleryData[active] : galleryData[active].slice(0, 8);
 
   return (
-    <section id="gallery" className={`py-20 md:py-32 transition-colors duration-700 px-6 relative overflow-hidden ${bgConfig[active].bg}`}>
+    // Memasang ref={sectionRef} untuk mendeteksi scroll
+    <section ref={sectionRef} id="gallery" className={`py-20 md:py-32 transition-colors duration-700 px-6 relative overflow-hidden ${bgConfig[active].bg}`}>
       {/* Dekorasi Background */}
       <div className="absolute top-10 left-10 pointer-events-none select-none opacity-[0.03] hidden md:block">
         <h1 className="text-[15vw] font-serif font-black uppercase italic">{bgConfig[active].label}</h1>
@@ -68,8 +74,7 @@ const Gallery = () => {
           </div>
 
           {/* Filter Kategori */}
-         <div className="w-full md:w-auto bg-[#1A120B]/5 p-2 rounded-[1.5rem] md:rounded-[2rem] border border-[#1A120B]/10 backdrop-blur-sm">
-            {/* Grid di mobile (2 kolom), Flex di desktop (sejajar) */}
+          <div className="w-full md:w-auto bg-[#1A120B]/5 p-2 rounded-[1.5rem] md:rounded-[2rem] border border-[#1A120B]/10 backdrop-blur-sm">
             <div className="grid grid-cols-2 gap-2 md:flex md:flex-row md:items-center">
               {categories.map(cat => (
                 <button 
@@ -88,8 +93,8 @@ const Gallery = () => {
           </div>
         </div>
 
-        {/* Photo Grid */}
-        <motion.div layout className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+        {/* Photo Grid - Ditambah pb-24 saat showAll true agar tombol fixed tidak menutupi foto */}
+        <motion.div layout className={`grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 ${showAll ? 'pb-24' : ''}`}>
           <AnimatePresence mode="popLayout">
             {displayPhotos.map((photo) => (
               <PhotoCard key={`${active}-${photo.id}`} url={photo.url} alt={active} />
@@ -97,18 +102,32 @@ const Gallery = () => {
           </AnimatePresence>
         </motion.div>
 
-        {/* Toggle See More / See Less */}
-        {galleryData[active].length > 8 && (
-          <div className="flex justify-center mt-12">
+        {/* 1. Tombol See More Works (NORMAL / INLINE) - Tanpa md:hidden agar jalan di Desktop */}
+        {!showAll && galleryData[active].length > 8 && (
+          <div className="mt-12 flex justify-center">
             <button 
-              onClick={() => setShowAll(!showAll)}
-              className="bg-[#1A120B] text-[#DAC0A3] px-10 py-4 rounded-full text-[10px] font-black uppercase tracking-[0.3em] border-2 border-[#DAC0A3] shadow-xl hover:scale-105 active:scale-95 transition-all duration-300"
+              onClick={() => setShowAll(true)}
+              className="flex items-center gap-2 px-8 py-3 bg-white border-2 border-[#8C5A3C] text-[#8C5A3C] rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[#8C5A3C] hover:text-white transition-colors shadow-sm"
             >
-              {showAll ? "See Less" : "See More Works"}
+              See More Works
+              <ChevronDown size={16} />
             </button>
           </div>
         )}
       </div>
+
+      {/* 2. Tombol See Less (FIXED / MELAYANG) - Tanpa md:hidden agar jalan di Desktop */}
+      {showAll && isInView && galleryData[active].length > 8 && (
+        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] animate-in slide-in-from-bottom-5 fade-in duration-300">
+          <button
+            onClick={() => setShowAll(false)}
+            className="flex items-center gap-2 px-8 py-4 bg-[#8C5A3C] text-white rounded-full font-bold uppercase tracking-widest text-[10px] shadow-[0_10px_30px_rgba(140,90,60,0.4)] hover:bg-[#4B2E2B] active:scale-95 transition-all"
+          >
+            See Less
+            <ChevronUp size={16} />
+          </button>
+        </div>
+      )}
     </section>
   );
 };

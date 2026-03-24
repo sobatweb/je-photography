@@ -31,8 +31,8 @@ function App() {
       <main className="bg-[#FDFBF7] overflow-x-hidden">
         <Navbar />
         <Hero />
-        <Cards />
         <About />
+        <Cards />
         <Gallery />
         <Testimonials />
         <Contact />
