@@ -71,7 +71,7 @@ const Footer = () => {
       </div>
 
       <div className="absolute left-1/2 -bottom-10 -translate-x-1/2 opacity-[0.03] pointer-events-none w-full text-center">
-        <h1 className="text-[25vw] font-serif text-[#FFF8F0] leading-none uppercase">JERRY</h1>
+        <h1 className="text-[25vw] font-serif text-[#FFF8F0] leading-none uppercase">JEREMY</h1>
       </div>
     </footer>
   );
