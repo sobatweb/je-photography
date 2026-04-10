@@ -41,7 +41,7 @@ const Hero = () => {
 
       {/* 2. Dark Overlay for readability (Stronger in the middle) */}
       <div className="absolute inset-0 z-10 bg-black/25 bg-radial-gradient from-transparent to-black/90" />
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/40 via-transparent to-black/40" />
+      <div className="absolute inset-0 z-10 bg-linear-to-b from-black/40 via-transparent to-black/40" />
 
       {/* 3. Main Content (Centered) */}
       <div className="container mx-auto z-20 px-6 text-center">

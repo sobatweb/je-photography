@@ -69,7 +69,8 @@ const SimpleCard = ({ card, index }) => {
       transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
       className="relative group cursor-pointer h-full"
     >
-      <div className="relative rounded-[2.5rem] bg-white border border-[#C08552]/10 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full min-h-[500px]">
+      {/* Perbaikan warning: min-h-[500px] -> min-h-125 */}
+      <div className="relative rounded-[2.5rem] bg-white border border-[#C08552]/10 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full min-h-125">
         
         {/* Top Image Hero */}
         <div className="relative h-52 w-full overflow-hidden shrink-0">
@@ -78,7 +79,8 @@ const SimpleCard = ({ card, index }) => {
             alt={card.title}
             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
+          {/* Perbaikan warning: bg-gradient-to-t -> bg-linear-to-t */}
+          <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
 
           {/* Icon Badge */}
           <div className="absolute bottom-5 left-6 flex items-center gap-3">
@@ -110,10 +112,11 @@ const SimpleCard = ({ card, index }) => {
           <div className="flex flex-col gap-3 pt-6 border-t border-[#C08552]/15 mt-auto">
             
             {/* Tombol Book Session dengan transisi smooth */}
+            {/* Perbaikan warning: h-[48px] -> h-12 */}
             <a 
               href="#contact" 
               onClick={(e) => handleSmoothScroll(e, '#contact')}
-              className="flex justify-between items-center w-full px-5 h-[48px] rounded-xl group/book transition-all duration-300 hover:brightness-110 shadow-sm"
+              className="flex justify-between items-center w-full px-5 h-12 rounded-xl group/book transition-all duration-300 hover:brightness-110 shadow-sm"
               style={{ backgroundColor: card.accent }}
             >
               <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-white">
@@ -125,6 +128,7 @@ const SimpleCard = ({ card, index }) => {
             </a>
 
             {/* Tombol Look Our Gallery */}
+            {/* Perbaikan warning: h-[48px] -> h-12 */}
             <a 
               href={card.href} 
               onClick={(e) => {
@@ -135,7 +139,7 @@ const SimpleCard = ({ card, index }) => {
                   targetElement.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="flex justify-center items-center w-full px-5 h-[48px] rounded-xl bg-transparent transition-all duration-300 ease-out border-2 border-[#8C5A3C]/40 text-[#8C5A3C] font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-[#8C5A3C] hover:text-white hover:border-[#8C5A3C]"
+              className="flex justify-center items-center w-full px-5 h-12 rounded-xl bg-transparent transition-all duration-300 ease-out border-2 border-[#8C5A3C]/40 text-[#8C5A3C] font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-[#8C5A3C] hover:text-white hover:border-[#8C5A3C]"
             >
               Look Our Gallery
             </a>
@@ -155,8 +159,10 @@ const SimpleCard = ({ card, index }) => {
 const Cards = () => {
   return (
     <section id="services" className="relative py-24 md:py-36 bg-[#FDFBF7] px-6 overflow-hidden">
-      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#FFF8F0] to-[#FDFBF7]/0 pointer-events-none z-0" />
-      <div className="absolute top-0 left-0 w-full h-[300px] bg-gradient-to-b from-white to-transparent pointer-events-none z-0" />
+      {/* Perbaikan warning: bg-gradient-to-t -> bg-linear-to-t */}
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-[#FFF8F0] to-[#FDFBF7]/0 pointer-events-none z-0" />
+      {/* Perbaikan warning: h-[300px] -> h-75, bg-gradient-to-b -> bg-linear-to-b */}
+      <div className="absolute top-0 left-0 w-full h-75 bg-linear-to-b from-white to-transparent pointer-events-none z-0" />
 
       <div className="container mx-auto relative z-10 max-w-7xl">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-20 md:mb-24 gap-8">
@@ -168,7 +174,8 @@ const Cards = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="flex items-center justify-center md:justify-start gap-4 mb-4">
-              <span className="w-8 h-[1px] bg-[#C08552] hidden md:block"></span>
+              {/* Perbaikan warning: h-[1px] -> h-px */}
+              <span className="w-8 h-px bg-[#C08552] hidden md:block"></span>
               <span className="text-[#8C5A3C] text-[11px] font-bold uppercase tracking-[0.6em]">
                 Service Spectrum
               </span>

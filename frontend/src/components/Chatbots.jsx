@@ -30,14 +30,14 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[1000]">
+    <div className="fixed bottom-6 right-6 z-1000">
       <AnimatePresence>
         {isOpen && (
           <motion.div 
             initial={{ opacity: 0, scale: 0.9, y: 10 }} 
             animate={{ opacity: 1, scale: 1, y: 0 }} 
             exit={{ opacity: 0, scale: 0.9, y: 10 }} 
-            className="absolute bottom-20 right-0 w-[300px] max-w-[calc(100vw-2rem)] bg-[#1A120B] border border-[#DAC0A3]/20 rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col"
+            className="absolute bottom-20 right-0 w-75 max-w-[calc(100vw-2rem)] bg-[#1A120B] border border-[#DAC0A3]/20 rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col"
           >
             {/* Header - Lebih Ramping */}
             <div className="p-5 bg-[#3C2A21] flex justify-between items-center border-b border-[#DAC0A3]/10">

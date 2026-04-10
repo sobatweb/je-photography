@@ -25,7 +25,7 @@ const PreLoader = () => {
       {loading && (
         <motion.div
           exit={{ clipPath: "inset(0 0 100% 0)", transition: { duration: 1, ease: [0.76, 0, 0.24, 1] } }}
-          className="fixed inset-0 z-[99999] bg-[#1A120B] flex flex-col items-center justify-center p-6"
+          className="fixed inset-0 z-99999 bg-[#1A120B] flex flex-col items-center justify-center p-6"
         >
           <div className="relative flex flex-col items-center w-full max-w-xs">
             <motion.h1 

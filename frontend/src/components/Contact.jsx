@@ -1,17 +1,14 @@
 import { motion } from 'framer-motion';
 import { MessageCircle, Instagram, Camera, Sparkles, ArrowUpRight } from 'lucide-react';
-// Pastikan path config ini sesuai dengan struktur folder kamu ya
 import { businessConfig } from '../config/businessConfig';
 
 const Contact = () => {
-  // Fungsi khusus untuk smooth scroll ke footer
   const handleSmoothScroll = (e, targetId) => {
     e.preventDefault();
     const targetElement = document.getElementById(targetId.replace('#', ''));
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: 'smooth' });
     } else {
-      // Fallback jika id="footer" belum dibuat Nabil, otomatis scroll mentok bawah
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
   };
@@ -20,13 +17,13 @@ const Contact = () => {
     <section id="contact" className="py-24 md:py-32 px-6 bg-[#FFF8F0] relative overflow-hidden">
       
       {/* Aesthetic Background Element */}
-      <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#C08552]/15 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-[#8C5A3C]/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-[-10%] right-[-10%] w-125 h-125 bg-[#C08552]/15 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-100 h-100 bg-[#8C5A3C]/10 rounded-full blur-[100px] pointer-events-none" />
       
       <div className="container mx-auto relative z-10 max-w-6xl">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
-          {/* Kiri: Teks & Info */}
+          {/* Left: Text & Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -35,18 +32,18 @@ const Contact = () => {
             className="space-y-8 text-center lg:text-left relative z-10"
           >
             <div className="flex items-center justify-center lg:justify-start gap-4">
-              <span className="w-8 h-[1px] bg-[#C08552] hidden lg:block"></span>
+              <span className="w-8 h-px bg-[#C08552] hidden lg:block"></span>
               <Camera className="text-[#8C5A3C]" size={16} />
               <span className="text-[#8C5A3C] font-bold uppercase text-[10px] tracking-[0.4em]">Book Your Session</span>
             </div>
             
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif text-[#4B2E2B] leading-tight">
-              Mari Abadikan <br /> 
-              <span className="italic text-[#8C5A3C]">Legacy Anda.</span>
+              Let's Capture <br /> 
+              <span className="italic text-[#8C5A3C]">Your Legacy.</span>
             </h2>
             
             <p className="text-[#4B2E2B]/70 text-base md:text-lg font-light leading-relaxed max-w-md mx-auto lg:mx-0">
-              Mulai dari kehangatan keluarga, detail produk kuliner, elegansi otomotif, hingga tingkah lucu hewan peliharaan Anda. Kami siap menangkap esensi terbaik dari setiap cerita.
+              From the warmth of family, culinary product details, and automotive elegance, to the playful antics of your pets. We are ready to capture the best essence of every story.
             </p>
 
             <div className="pt-6 flex justify-center lg:justify-start">
@@ -64,7 +61,7 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* Kanan: Card Direct WA */}
+          {/* Right: Direct WhatsApp Card */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +69,7 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="bg-[#4B2E2B] p-10 md:p-14 rounded-[3rem] shadow-2xl relative overflow-hidden group text-center border border-[#8C5A3C]/20"
           >
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#C08552] to-transparent opacity-40" />
+            <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-[#C08552] to-transparent opacity-40" />
             <div className="absolute -right-10 -top-10 w-40 h-40 bg-[#8C5A3C]/20 rounded-full blur-3xl"></div>
             
             <div className="relative z-10 space-y-8">
@@ -82,7 +79,7 @@ const Contact = () => {
               
               <div className="space-y-3">
                 <h3 className="text-[#FFF8F0] text-3xl md:text-4xl font-serif italic">Ready to Shoot?</h3>
-                <p className="text-[#FFF8F0]/50 text-[10px] uppercase tracking-[0.3em] font-medium">Respon cepat dalam hitungan menit</p>
+                <p className="text-[#FFF8F0]/50 text-[10px] uppercase tracking-[0.3em] font-medium">Fast response within minutes</p>
               </div>
 
               <motion.a
@@ -94,19 +91,18 @@ const Contact = () => {
                 className="flex items-center justify-center gap-3 bg-[#C08552] w-full py-5 rounded-2xl text-white font-bold uppercase tracking-[0.15em] text-xs shadow-[0_15px_30px_-10px_rgba(192,133,82,0.5)] transition-all hover:bg-[#8C5A3C]"
               >
                 <MessageCircle size={18} fill="currentColor" className="text-white" />
-                Chat Whatsapp
+                Chat WhatsApp
                 <ArrowUpRight size={16} className="opacity-70" />
               </motion.a>
               
               <p className="text-[#FFF8F0]/30 text-[9px] uppercase tracking-[0.2em] leading-loose pt-4 border-t border-[#FFF8F0]/10">
-                Klik tombol di atas untuk berdiskusi langsung dengan kami
+                Click the button above to chat directly with us
               </p>
             </div>
           </motion.div>
 
         </div>
 
-        {/* Location Footer Mini */}
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

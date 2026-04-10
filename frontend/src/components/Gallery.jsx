@@ -18,7 +18,7 @@ const PhotoCard = memo(({ url, alt }) => (
     initial={{ opacity: 0, scale: 0.9 }}
     animate={{ opacity: 1, scale: 1 }}
     exit={{ opacity: 0, scale: 0.9 }}
-    className="aspect-square overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-white shadow-sm group relative"
+    className="aspect-square overflow-hidden rounded-3xl md:rounded-4xl bg-white shadow-sm group relative"
   >
     <img 
       src={url} 
@@ -34,16 +34,13 @@ const Gallery = () => {
   const [active, setActive] = useState("Food");
   const [showAll, setShowAll] = useState(false);
 
-  // Setup Ref dan InView persis seperti Testimonial
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef);
 
-  // Reset ke 8 foto setiap kali ganti kategori
   useEffect(() => {
     setShowAll(false);
   }, [active]);
 
-  // Listen for category change from Card.jsx
   useEffect(() => {
     const handleCategoryChange = (e) => {
       if (categories.includes(e.detail)) {
@@ -57,9 +54,7 @@ const Gallery = () => {
   const displayPhotos = showAll ? galleryData[active] : galleryData[active].slice(0, 8);
 
   return (
-    // Memasang ref={sectionRef} untuk mendeteksi scroll
     <section ref={sectionRef} id="gallery" className={`py-20 md:py-32 transition-colors duration-700 px-6 relative overflow-hidden ${bgConfig[active].bg}`}>
-      {/* Dekorasi Background */}
       <div className="absolute top-10 left-10 pointer-events-none select-none opacity-[0.03] hidden md:block">
         <h1 className="text-[15vw] font-serif font-black uppercase italic">{bgConfig[active].label}</h1>
       </div>
@@ -73,14 +68,13 @@ const Gallery = () => {
             <h2 className="text-5xl md:text-7xl font-serif text-[#1A120B]">The <span className="italic">Visuals.</span></h2>
           </div>
 
-          {/* Filter Kategori */}
-          <div className="w-full md:w-auto bg-[#1A120B]/5 p-2 rounded-[1.5rem] md:rounded-[2rem] border border-[#1A120B]/10 backdrop-blur-sm">
+          <div className="w-full md:w-auto bg-[#1A120B]/5 p-2 rounded-3xl md:rounded-4xl border border-[#1A120B]/10 backdrop-blur-sm">
             <div className="grid grid-cols-2 gap-2 md:flex md:flex-row md:items-center">
               {categories.map(cat => (
                 <button 
                   key={cat} 
                   onClick={() => setActive(cat)}
-                  className={`px-4 py-3 md:px-8 md:py-4 rounded-[1rem] md:rounded-[1.5rem] text-[9px] md:text-[10px] uppercase tracking-widest font-black transition-all border-2 w-full md:w-auto ${
+                  className={`px-4 py-3 md:px-8 md:py-4 rounded-2xl md:rounded-3xl text-[9px] md:text-[10px] uppercase tracking-widest font-black transition-all border-2 w-full md:w-auto ${
                     active === cat 
                     ? 'bg-[#1A120B] text-[#DAC0A3] border-[#DAC0A3] shadow-lg' 
                     : 'bg-white text-[#1A120B]/40 border-white hover:text-[#1A120B]'
@@ -93,7 +87,6 @@ const Gallery = () => {
           </div>
         </div>
 
-        {/* Photo Grid - Ditambah pb-24 saat showAll true agar tombol fixed tidak menutupi foto */}
         <motion.div layout className={`grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 ${showAll ? 'pb-24' : ''}`}>
           <AnimatePresence mode="popLayout">
             {displayPhotos.map((photo) => (
@@ -102,7 +95,6 @@ const Gallery = () => {
           </AnimatePresence>
         </motion.div>
 
-        {/* 1. Tombol See More Works (NORMAL / INLINE) - Tanpa md:hidden agar jalan di Desktop */}
         {!showAll && galleryData[active].length > 8 && (
           <div className="mt-12 flex justify-center">
             <button 
@@ -116,9 +108,8 @@ const Gallery = () => {
         )}
       </div>
 
-      {/* 2. Tombol See Less (FIXED / MELAYANG) - Tanpa md:hidden agar jalan di Desktop */}
       {showAll && isInView && galleryData[active].length > 8 && (
-        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] animate-in slide-in-from-bottom-5 fade-in duration-300">
+        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 animate-in slide-in-from-bottom-5 fade-in duration-300">
           <button
             onClick={() => setShowAll(false)}
             className="flex items-center gap-2 px-8 py-4 bg-[#8C5A3C] text-white rounded-full font-bold uppercase tracking-widest text-[10px] shadow-[0_10px_30px_rgba(140,90,60,0.4)] hover:bg-[#4B2E2B] active:scale-95 transition-all"
