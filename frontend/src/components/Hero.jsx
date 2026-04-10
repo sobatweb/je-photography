@@ -5,16 +5,16 @@ import { galleryData } from "../data/GalleryData";
 const Hero = () => {
   // Photos from public/images/hero photos/
   const collageImages = [
-    { url: "/images/hero photos/otomotif1.jpg", span: "md:col-span-2 md:row-span-2" },
-    { url: "/images/hero photos/wedding1.jpg", span: "md:col-span-1 md:row-span-1" },
-    { url: "/images/hero photos/pet1.jpg", span: "md:col-span-1 md:row-span-2" },
-    { url: "/images/hero photos/otomotif2.webp", span: "md:col-span-1 md:row-span-1" },
-    { url: "/images/hero photos/wedding2.jpg", span: "md:col-span-2 md:row-span-1" },
-    { url: "/images/hero photos/pet2.jpeg", span: "md:col-span-1 md:row-span-1" },
-    { url: "/images/hero photos/otomotif3.jpeg", span: "md:col-span-1 md:row-span-1" },
-    { url: "/images/hero photos/wedding3.jpg", span: "md:col-span-1 md:row-span-1" },
-    { url: "/images/hero photos/pet3.jpg", span: "md:col-span-1 md:row-span-1" },
-    { url: "/images/hero photos/food4.jpg", span: "md:col-span-2 md:row-span-1" },
+    { url: "/assets/Selected Photos/Je Carshoot/image06.webp", span: "md:col-span-2 md:row-span-2" },
+    { url: "/assets/Selected Photos/Je Portraiture/image20.webp", span: "md:col-span-1 md:row-span-1" },
+    { url: "/assets/Selected Photos/Je Petshoot/image07.webp", span: "md:col-span-1 md:row-span-2" },
+    { url: "/assets/Selected Photos/Je Carshoot/image01.webp", span: "md:col-span-1 md:row-span-1" },
+    { url: "/assets/Selected Photos/Je Portraiture/image17.webp", span: "md:col-span-2 md:row-span-1" },
+    { url: "/assets/Selected Photos/Je Petshoot/image08.webp", span: "md:col-span-1 md:row-span-1" },
+    { url: "/assets/Selected Photos/Je Cekrek/image01.webp", span: "md:col-span-1 md:row-span-1" },
+    { url: "/assets/Selected Photos/Je Cekrek/image18.webp", span: "md:col-span-1 md:row-span-1" },
+    { url: "/assets/Selected Photos/Je Petshoot/image11.webp", span: "md:col-span-1 md:row-span-1" },
+    { url: "/assets/Selected Photos/Je Portraiture/image04.webp", span: "md:col-span-2 md:row-span-1" },
   ];
 
   return (
