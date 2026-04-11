@@ -7,10 +7,9 @@ import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Chatbot from './components/Chatbots';
-import PreLoader from './components/PreLoader';
 import Testimonials from './components/Testimonials';
 
-import { AnimatePresence } from 'framer-motion';
+
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,9 +24,7 @@ function App() {
 
   return (
     <div>
-      <AnimatePresence>
-        {isLoading && <PreLoader />}
-      </AnimatePresence>
+        
       <main className="bg-[#FDFBF7] overflow-x-hidden">
         <Navbar />
         <Hero />
