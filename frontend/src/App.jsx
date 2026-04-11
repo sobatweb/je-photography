@@ -4,9 +4,10 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Cards from './components/Card';
 import Gallery from './components/Gallery';
+import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Chatbot from './components/Chatbots';
+import WhatsAppButton from './components/WhatsAppButton';
 import Testimonials from './components/Testimonials';
 
 
@@ -32,9 +33,10 @@ function App() {
         <Cards />
         <Gallery />
         <Testimonials />
+        <FAQ />
         <Contact />
         <Footer />
-        <Chatbot isLoading={isLoading} />
+        <WhatsAppButton isLoading={isLoading} />
       </main>
     </div>
   );
