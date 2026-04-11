@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Camera, Heart, Users, Star, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { Camera, Heart, Users, Star, ArrowUpRight, CheckCircle2, Aperture, Scan } from 'lucide-react';
 
 const cardData = [
   {
@@ -10,8 +10,8 @@ const cardData = [
     title: "Food & Products",
     subtitle: "Culinary & Products",
     desc: "Bikin menu atau produk andalanmu nggak cuma fungsional, tapi juga estetik buat dipandang. Yuk, kita buat visual brand kamu makin 'mahal' dan bikin siapa pun yang lihat langsung pengen beli!",
-    accent: "#8C5A3C",
-    bgImage: "/images/food/f_1.JPEG",
+    accent: "#4B2E2B",
+    bgImage: "/images/food/food1.webp",
     logo: "/assets/Logo/image01.webp", // Dummy Logo
     href: "#gallery",
   },
@@ -22,8 +22,8 @@ const cardData = [
     title: "Event",
     subtitle: "Gathering & Celebration",
     desc: "Setiap momen punya ceritanya sendiri. Sini, aku bantu abadikan keseruan event kamu—dari tawa bareng temen sampe vibes haru wisuda—biar bisa dikenang terus selamanya!",
-    accent: "#C08552",
-    bgImage: "/images/event/e_1.jpg",
+    accent: "#6d472fff",
+    bgImage: "/images/event/event19.webp",
     logo: "/assets/Logo/image03.webp", // Dummy Logo
     href: "#gallery",
   },
@@ -34,8 +34,8 @@ const cardData = [
     title: "Automotive",
     subtitle: "Modified & Speed",
     desc: "Mobil atau motor kamu bukan sekadar mesin, tapi kebanggaan. Ayo kita bikin cinematic shoot yang nonjolin lekuk agresif dan detail keren tunggangan kesayanganmu!",
-    accent: "#4B2E2B",
-    bgImage: "/images/otomotif/o_1.jpg",
+    accent: "#935f3fff",
+    bgImage: "/images/otomotif/auto17.webp",
     logo: "/assets/Logo/image02.webp", // Dummy Logo
     href: "#gallery",
   },
@@ -46,8 +46,8 @@ const cardData = [
     title: "Pet",
     subtitle: "Animals & Nature",
     desc: "Si anabul lagi lucu-lucunya? Jangan sampe kelewatan! Kita potret tingkah gemas dan karakter unik mereka dalam frame yang hangat buat jadi kenangan manis kamu.",
-    accent: "#8C5A3C",
-    bgImage: "/images/pet/p_1.jpg",
+    accent: "#ba8252ff",
+    bgImage: "/images/pet/pet12.webp",
     logo: "/assets/Logo/image04.webp", // Dummy Logo
     href: "#gallery",
   },
@@ -72,15 +72,6 @@ const SimpleCard = ({ card, index }) => {
       transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
       className="h-full flex flex-col relative group pt-16" // pt-16 memberi ruang untuk logo yang menyembul
     >
-{/* --- LOGO WATERMARK BACKGROUND --- */}
-<div className="absolute -top-30 left-1/2 -translate-x-1/2 w-56 h-56 opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 pointer-events-none z-0">
-  <img 
-    src={card.logo} 
-    alt="Watermark Logo" 
-    className="w-full h-full object-contain grayscale"
-  />
-</div>
-
       {/* --- CARD UTAMA --- */}
       <div className="relative z-10 bg-white rounded-[2.5rem] p-4 shadow-sm border border-gray-100 hover:shadow-2xl transition-all duration-500 flex flex-col h-full overflow-hidden">
         
@@ -124,7 +115,6 @@ const SimpleCard = ({ card, index }) => {
             <a 
               href="#contact" 
               onClick={(e) => handleSmoothScroll(e, '#contact')}
-              // Menggunakan justify-center agar teks murni di tengah
               className="relative flex justify-center items-center w-full px-6 h-12 rounded-2xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] hover:shadow-lg group/btn1"
               style={{ backgroundColor: card.accent }}
             >
@@ -132,7 +122,6 @@ const SimpleCard = ({ card, index }) => {
                 Book Session
               </span>
 
-              {/* Ikon dipaksa ke pojok kanan dengan absolute */}
               <div className="absolute right-3 w-7 h-7 rounded-full bg-white/20 flex items-center justify-center transition-all duration-300 group-hover/btn1:bg-white group-hover/btn1:rotate-45">
                 <ArrowUpRight size={14} strokeWidth={2.5} className="text-white group-hover/btn1:text-black transition-colors" />
               </div>
@@ -161,8 +150,46 @@ const SimpleCard = ({ card, index }) => {
 const Cards = () => {
   return (
     <section id="services" className="relative py-24 md:py-32 bg-[#4B2E2B] px-6 overflow-hidden">
+      
+      {/* --- BACKGROUND ACCENTS (DEKORASI SAJA) --- */}
+      <div className="absolute inset-0 pointer-events-none select-none z-0">
+        {/* 1. Giant Outlined Typography */}
+        <div className="absolute top-10 left-0 w-full opacity-[0.03] flex justify-between items-start px-10">
+          <h2 className="text-[20vw] font-black text-white leading-none tracking-tighter uppercase">STUDIO</h2>
+        </div>
+        <div className="absolute bottom-10 right-0 w-full opacity-[0.03] flex justify-end items-end px-10">
+          <h2 className="text-[20vw] font-black text-white leading-none tracking-tighter uppercase italic">VISUAL</h2>
+        </div>
+
+        {/* 2. Bold Light Leaks (Glows) */}
+        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-[#8C5A3C] rounded-full blur-[120px] opacity-20" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-[#DAC0A3] rounded-full blur-[100px] opacity-10" />
+
+        {/* 3. Camera Viewfinder Brackets */}
+        <div className="absolute inset-10 border-white/[0.03] border-[1px] rounded-[3rem]">
+          <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-[#DAC0A3]/20 rounded-tl-3xl" />
+          <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-[#DAC0A3]/20 rounded-tr-3xl" />
+          <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-[#DAC0A3]/20 rounded-bl-3xl" />
+          <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-[#DAC0A3]/20 rounded-br-3xl" />
+          
+          {/* Center Focus Crosshair */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.05]">
+            <Scan size={120} strokeWidth={0.5} className="text-white" />
+          </div>
+        </div>
+
+        {/* 4. Large Rotating Aperture */}
+        <motion.div 
+          animate={{ rotate: 360 }}
+          transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
+          className="absolute -bottom-20 -right-20 opacity-[0.04]"
+        >
+          <Aperture size={400} strokeWidth={0.5} className="text-white" />
+        </motion.div>
+      </div>
+
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-4 gap-8">
           <motion.div
             className="space-y-4 text-center md:text-left"
             initial={{ opacity: 0, x: -30 }}
@@ -182,7 +209,7 @@ const Cards = () => {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-1 items-stretch">
           {cardData.map((card, i) => (
             <SimpleCard key={card.id} card={card} index={i} />
           ))}
