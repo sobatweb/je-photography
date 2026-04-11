@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import poto from "../../public/images/about/about.webp";
+import poto from "/images/about/about.webp";
 
 const About = () => {
   return (

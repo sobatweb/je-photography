@@ -18,7 +18,7 @@ const Footer = () => {
           {/* Bio Section */}
           <div className="lg:max-w-md space-y-6 text-center lg:text-left">
             <h2 className="text-5xl md:text-6xl font-serif text-[#FFF8F0] tracking-tighter">
-              Jeremy<span className="text-[#DAC0A3]">.</span>
+              Je Creative<span className="text-[#DAC0A3]">.</span>
             </h2>
             <p className="text-[#FFF8F0]/60 font-light leading-relaxed text-sm max-w-sm mx-auto lg:mx-0">
               Capturing the unique essence of every subject, from automotive to pets. Every shot is a timeless story.
@@ -61,7 +61,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-[#FFF8F0]/10 flex flex-col md:flex-row justify-between items-center gap-6 text-center">
           <p className="text-[8px] uppercase tracking-[0.3em] text-[#FFF8F0]/50">
-            © 2026 Jeremy PORTFOLIO — VISUAL EXCELLENCE.
+            © 2026 Je Creative PORTFOLIO — VISUAL EXCELLENCE.
           </p>
           <button onClick={scrollToTop} className="group flex items-center gap-3 text-[#DAC0A3]/80 hover:text-[#FFF8F0] transition-colors">
             <span className="text-[11px] uppercase tracking-widest">Top</span>
@@ -71,7 +71,7 @@ const Footer = () => {
       </div>
 
       <div className="absolute left-1/2 -bottom-10 -translate-x-1/2 opacity-[0.03] pointer-events-none w-full text-center">
-        <h1 className="text-[25vw] font-serif text-[#FFF8F0] leading-none uppercase">JEREMY</h1>
+        <h1 className="text-[25vw] font-serif text-[#FFF8F0] leading-none uppercase">Jeremy</h1>
       </div>
     </footer>
   );

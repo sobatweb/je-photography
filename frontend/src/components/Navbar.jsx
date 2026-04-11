@@ -24,7 +24,7 @@ const Navbar = () => {
     <nav className={`fixed w-full transition-all duration-500 z-1000 ${scrolled || isOpen ? 'bg-[#1A120B] py-4 shadow-2xl' : 'bg-transparent py-8'
       }`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="text-xl md:text-2xl font-serif tracking-[0.3em] text-[#DAC0A3] z-1001">DEMO</a>
+        <a href="#" className="text-xl md:text-2xl font-serif tracking-[0.3em] text-[#DAC0A3] z-1001">Je Creative</a>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex gap-10">
