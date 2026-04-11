@@ -65,6 +65,24 @@ const Gallery = () => {
     setDisplayLimit(8);
   }, [active]);
 
+  useEffect(() => {
+    const handleCategoryChange = (e) => {
+      let category = e.detail;
+      // Map the title from Card.jsx to the Gallery category keys
+      if (category.includes("Food")) category = "Food";
+      else if (category.includes("Event")) category = "Event";
+      else if (category.includes("Otomotif")) category = "Otomotif";
+      else if (category.includes("Pet")) category = "Pet";
+      
+      if (categories.includes(category)) {
+        setActive(category);
+      }
+    };
+
+    window.addEventListener('changeGalleryCategory', handleCategoryChange);
+    return () => window.removeEventListener('changeGalleryCategory', handleCategoryChange);
+  }, []);
+
   const displayPhotos = galleryData[active].slice(0, displayLimit);
   const hasMore = galleryData[active].length > displayLimit;
 
