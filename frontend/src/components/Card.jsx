@@ -12,6 +12,7 @@ const cardData = [
     desc: "Bikin menu atau produk andalanmu nggak cuma fungsional, tapi juga estetik buat dipandang. Yuk, kita buat visual brand kamu makin 'mahal' dan bikin siapa pun yang lihat langsung pengen beli!",
     accent: "#8C5A3C",
     bgImage: "/images/food/f_1.JPEG",
+    logo: "/assets/Logo/image01.webp", // Dummy Logo
     href: "#gallery",
   },
   {
@@ -23,6 +24,7 @@ const cardData = [
     desc: "Setiap momen punya ceritanya sendiri. Sini, aku bantu abadikan keseruan event kamu—dari tawa bareng temen sampe vibes haru wisuda—biar bisa dikenang terus selamanya!",
     accent: "#C08552",
     bgImage: "/images/event/e_1.jpg",
+    logo: "/assets/Logo/image03.webp", // Dummy Logo
     href: "#gallery",
   },
   {
@@ -34,6 +36,7 @@ const cardData = [
     desc: "Mobil atau motor kamu bukan sekadar mesin, tapi kebanggaan. Ayo kita bikin cinematic shoot yang nonjolin lekuk agresif dan detail keren tunggangan kesayanganmu!",
     accent: "#4B2E2B",
     bgImage: "/images/otomotif/o_1.jpg",
+    logo: "/assets/Logo/image02.webp", // Dummy Logo
     href: "#gallery",
   },
   {
@@ -45,6 +48,7 @@ const cardData = [
     desc: "Si anabul lagi lucu-lucunya? Jangan sampe kelewatan! Kita potret tingkah gemas dan karakter unik mereka dalam frame yang hangat buat jadi kenangan manis kamu.",
     accent: "#8C5A3C",
     bgImage: "/images/pet/p_1.jpg",
+    logo: "/assets/Logo/image04.webp", // Dummy Logo
     href: "#gallery",
   },
 ];
@@ -66,9 +70,19 @@ const SimpleCard = ({ card, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
-      className="h-full flex flex-col"
+      className="h-full flex flex-col relative group pt-16" // pt-16 memberi ruang untuk logo yang menyembul
     >
-      <div className="group relative bg-white rounded-[2.5rem] p-4 shadow-sm border border-gray-100 hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
+{/* --- LOGO WATERMARK BACKGROUND --- */}
+<div className="absolute -top-30 left-1/2 -translate-x-1/2 w-56 h-56 opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 pointer-events-none z-0">
+  <img 
+    src={card.logo} 
+    alt="Watermark Logo" 
+    className="w-full h-full object-contain grayscale"
+  />
+</div>
+
+      {/* --- CARD UTAMA --- */}
+      <div className="relative z-10 bg-white rounded-[2.5rem] p-4 shadow-sm border border-gray-100 hover:shadow-2xl transition-all duration-500 flex flex-col h-full overflow-hidden">
         
         {/* Area Foto */}
         <div className="relative aspect-[10/11] w-full overflow-hidden rounded-[2rem] bg-gray-100 shrink-0">
@@ -106,27 +120,21 @@ const SimpleCard = ({ card, index }) => {
             {card.desc}
           </p>
 
-          {/* Action Buttons dengan Hover Effect yang diperkuat */}
           <div className="flex flex-col gap-3 mt-auto">
-            {/* Button 1: Book Session */}
             <a 
               href="#contact" 
               onClick={(e) => handleSmoothScroll(e, '#contact')}
-              // Menggunakan justify-center agar teks murni di tengah
-              className="relative flex justify-center items-center w-full px-6 h-12 rounded-2xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] hover:shadow-lg group/btn1"
+              className="flex justify-between items-center w-full px-6 h-12 rounded-2xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] hover:shadow-lg group/btn1"
               style={{ backgroundColor: card.accent }}
             >
-              <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-white transition-transform duration-300 group-hover/btn1:-translate-x-1">
+              <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-white transition-transform duration-300 group-hover/btn1:translate-x-1">
                 Book Session
               </span>
-
-              {/* Ikon dipaksa ke pojok kanan dengan absolute */}
-              <div className="absolute right-3 w-7 h-7 rounded-full bg-white/20 flex items-center justify-center transition-all duration-300 group-hover/btn1:bg-white group-hover/btn1:rotate-45">
+              <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center transition-all duration-300 group-hover/btn1:bg-white group-hover/btn1:rotate-45">
                 <ArrowUpRight size={14} strokeWidth={2.5} className="text-white group-hover/btn1:text-black transition-colors" />
               </div>
             </a>
 
-            {/* Button 2: Gallery */}
             <button 
               onClick={(e) => {
                 e.preventDefault(); 
@@ -149,7 +157,7 @@ const SimpleCard = ({ card, index }) => {
 
 const Cards = () => {
   return (
-    <section id="services" className="relative py-24 md:py-32 bg-[#FDFBF7] px-6">
+    <section id="services" className="relative py-24 md:py-32 bg-[#4B2E2B] px-6 overflow-hidden">
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <motion.div
@@ -161,17 +169,17 @@ const Cards = () => {
           >
             <div className="flex items-center justify-center md:justify-start gap-3">
               <span className="w-10 h-px bg-[#8C5A3C]"></span>
-              <span className="text-[#8C5A3C] text-[11px] font-bold uppercase tracking-[0.5em]">
+              <span className="text-[#DAC0A3] text-[11px] font-bold uppercase tracking-[0.5em]">
                 Specialized Services
               </span>
             </div>
-            <h2 className="text-5xl md:text-7xl font-serif text-[#4B2E2B] leading-[1.1]">
-              What We <span className="italic text-[#8C5A3C]">Capture</span>
+            <h2 className="text-5xl md:text-7xl font-serif text-white leading-[1.1]">
+              What We <span className="italic text-[#DAC0A3]">Capture</span>
             </h2>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16 items-stretch">
           {cardData.map((card, i) => (
             <SimpleCard key={card.id} card={card} index={i} />
           ))}
