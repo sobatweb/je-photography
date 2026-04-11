@@ -69,7 +69,7 @@ const Hero = () => {
 
       {/* 1. Background Collage Grid */}
       <div
-        className="absolute inset-0 z-0 grid grid-cols-2 md:grid-cols-4 gap-2 opacity-80"
+        className="absolute inset-0 z-0 grid grid-cols-2 md:grid-cols-4 gap-2 opacity-60"
         style={{
           transformStyle: "flat",
           backfaceVisibility: "hidden",
