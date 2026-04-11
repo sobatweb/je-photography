@@ -1,10 +1,42 @@
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Camera, MousePointer2, MoveDown } from "lucide-react";
 import { galleryData } from "../data/GalleryData";
 
+const HeroImage = ({ img, index }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 1.05 }}
+      animate={isLoaded ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.05 }}
+      transition={{
+        duration: 1.2,
+        delay: index * 0.1, // Subtle stagger after load
+        ease: [0.22, 1, 0.36, 1]
+      }}
+      style={{
+        willChange: "transform, opacity",
+        backfaceVisibility: "hidden"
+      }}
+      className={`relative overflow-hidden rounded-sm ${img.span}`}
+    >
+      <img
+        src={img.url}
+        alt={`Hero Collage ${index}`}
+        loading="eager"
+        decoding="async"
+        onLoad={() => setIsLoaded(true)}
+        fetchpriority={index < 3 ? "high" : "auto"}
+        className="w-full h-full object-cover transition-opacity duration-300"
+      />
+    </motion.div>
+  );
+};
+
 const Hero = () => {
   // Photos from public/images/hero photos/
-  const collageImages = [
+  const collageImages = useMemo(() => [
     { url: "/assets/Selected Photos/Je Carshoot/image06.webp", span: "md:col-span-2 md:row-span-2" },
     { url: "/assets/Selected Photos/Je Portraiture/image20.webp", span: "md:col-span-1 md:row-span-1" },
     { url: "/assets/Selected Photos/Je Petshoot/image07.webp", span: "md:col-span-1 md:row-span-2" },
@@ -15,27 +47,22 @@ const Hero = () => {
     { url: "/assets/Selected Photos/Je Cekrek/image18.webp", span: "md:col-span-1 md:row-span-1" },
     { url: "/assets/Selected Photos/Je Petshoot/image11.webp", span: "md:col-span-1 md:row-span-1" },
     { url: "/assets/Selected Photos/Je Portraiture/image04.webp", span: "md:col-span-2 md:row-span-1" },
-  ];
+  ], []);
 
   return (
     <section id="home" className="relative min-h-screen w-full flex items-center justify-center bg-black overflow-hidden">
 
       {/* 1. Background Collage Grid (Varied Sizes) */}
-      <div className="absolute inset-0 z-0 grid grid-cols-2 md:grid-cols-4 gap-2 opacity-80 grayscale contrast-110">
+      <div
+        className="absolute inset-0 z-0 grid grid-cols-2 md:grid-cols-4 gap-2 opacity-80"
+        style={{
+          perspective: "1000px",
+          transformStyle: "preserve-3d",
+          filter: "grayscale(1) contrast(1.1)"
+        }}
+      >
         {collageImages.map((img, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.5, delay: index * 0.1 }}
-            className={`relative overflow-hidden rounded-sm ${img.span}`}
-          >
-            <img
-              src={img.url}
-              alt={`Hero Collage ${index}`}
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
+          <HeroImage key={index} img={img} index={index} />
         ))}
       </div>
 
@@ -49,13 +76,15 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          style={{ willChange: "transform, opacity" }}
           className="max-w-4xl mx-auto space-y-6"
         >
           {/* Top Label */}
           <div className="flex items-center gap-4 justify-center">
             <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+              style={{ willChange: "transform" }}
               className="w-7 h-7 rounded-full border border-[#DAC0A3]/30 flex items-center justify-center text-[#DAC0A3]"
             >
               <Camera size={12} />
@@ -71,17 +100,18 @@ const Hero = () => {
 
           {/* CTA Button (Premium Solid Style) */}
           <div className="flex justify-center pt-2">
-            <motion.button
+            <motion.a
+              href="#services"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative px-10 py-4 rounded-full bg-[#DAC0A3] text-black overflow-hidden transition-all shadow-[0_20px_40px_-10px_rgba(218,192,163,0.3)]"
+              className="group relative px-10 py-4 rounded-full bg-[#DAC0A3] text-black overflow-hidden transition-all shadow-[0_20px_40px_-10px_rgba(218,192,163,0.3)] cursor-pointer"
             >
               <span className="relative z-10 uppercase text-[11px] font-bold tracking-[0.2em] flex items-center gap-3 transition-colors group-hover:text-white font-sans">
                 Explore Our Works <MousePointer2 size={14} />
               </span>
               {/* Efek Hover Fill */}
               <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.22, 1, 0.36, 1]" />
-            </motion.button>
+            </motion.a>
           </div>
         </motion.div>
       </div>
