@@ -119,7 +119,7 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
               className="group relative px-8 py-3 md:px-10 md:py-4 rounded-full bg-[#DAC0A3] text-black overflow-hidden transition-all shadow-lg cursor-pointer"
             >
-              <span className="relative z-10 uppercase text-[10px] md:text-[11px] font-bold tracking-[0.2em] flex items-center gap-3 transition-colors group-hover:text-white font-sans">
+              <span className="relative z-10 uppercase text-[8px] md:text-[10px] font-bold tracking-[0.2em] flex items-center gap-3 transition-colors group-hover:text-white font-sans">
                 Explore Our Works <MousePointer2 size={14} />
               </span>
               {/* Efek Hover Fill */}
