@@ -8,7 +8,7 @@ const categories = Object.keys(galleryData);
 const bgConfig = {
   Food: { bg: "bg-[#FFF8F0]", accent: "text-[#803D3B]", label: "Culinary Art" },
   Event: { bg: "bg-[#F8F9FA]", accent: "text-[#1A120B]", label: "Life Moments" },
-  Otomotif: { bg: "bg-[#FFF8F0]", accent: "text-[#333333]", label: "Engine & Soul" },
+  Automotive: { bg: "bg-[#FFF8F0]", accent: "text-[#333333]", label: "Engine & Soul" },
   Pet: { bg: "bg-[#F8F9FA]", accent: "text-[#4A5D4A]", label: "Pure Loyalties" }
 };
 
@@ -71,7 +71,7 @@ const Gallery = () => {
       // Map the title from Card.jsx to the Gallery category keys
       if (category.includes("Food")) category = "Food";
       else if (category.includes("Event")) category = "Event";
-      else if (category.includes("Otomotif")) category = "Otomotif";
+      else if (category.includes("Automotive")) category = "Automotive";
       else if (category.includes("Pet")) category = "Pet";
       
       if (categories.includes(category)) {

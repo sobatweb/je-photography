@@ -31,7 +31,7 @@ const cardData = [
     id: 3,
     icon: Camera,
     tag: "Je Carshoot",
-    title: "Otomotif",
+    title: "Automotive",
     subtitle: "Modified & Speed",
     desc: "Mobil atau motor kamu bukan sekadar mesin, tapi kebanggaan. Ayo kita bikin cinematic shoot yang nonjolin lekuk agresif dan detail keren tunggangan kesayanganmu!",
     accent: "#4B2E2B",
@@ -124,13 +124,16 @@ const SimpleCard = ({ card, index }) => {
             <a 
               href="#contact" 
               onClick={(e) => handleSmoothScroll(e, '#contact')}
-              className="flex justify-between items-center w-full px-6 h-12 rounded-2xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] hover:shadow-lg group/btn1"
+              // Menggunakan justify-center agar teks murni di tengah
+              className="relative flex justify-center items-center w-full px-6 h-12 rounded-2xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] hover:shadow-lg group/btn1"
               style={{ backgroundColor: card.accent }}
             >
-              <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-white transition-transform duration-300 group-hover/btn1:translate-x-1">
+              <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-white transition-transform duration-300 group-hover/btn1:-translate-x-1">
                 Book Session
               </span>
-              <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center transition-all duration-300 group-hover/btn1:bg-white group-hover/btn1:rotate-45">
+
+              {/* Ikon dipaksa ke pojok kanan dengan absolute */}
+              <div className="absolute right-3 w-7 h-7 rounded-full bg-white/20 flex items-center justify-center transition-all duration-300 group-hover/btn1:bg-white group-hover/btn1:rotate-45">
                 <ArrowUpRight size={14} strokeWidth={2.5} className="text-white group-hover/btn1:text-black transition-colors" />
               </div>
             </a>

@@ -110,7 +110,8 @@ const Contact = () => {
           transition={{ delay: 0.5, duration: 1 }}
           className="mt-24 pt-10 border-t border-[#C08552]/20 flex flex-col md:flex-row justify-between items-center gap-6"
         >
-          <p className="text-[10px] uppercase tracking-[0.4em] text-[#8C5A3C] font-bold">Studio Photography — Jakarta</p>
+          <p className="text-[10px] uppercase tracking-[0.4em] text-[#8C5A3C] font-bold"> Photography Services - Jakarta
+</p>
           <div className="flex gap-8 text-[9px] uppercase tracking-[0.2em] font-black text-[#4B2E2B]">
             <span className="opacity-50 hover:opacity-100 transition-opacity cursor-pointer">Privacy</span>
             <span className="opacity-50 hover:opacity-100 transition-opacity cursor-pointer">Terms</span>

@@ -10,7 +10,7 @@ export const galleryData = {
     url: `/images/event/event${i + 1}.webp` 
   })),
   
-  Otomotif: Array.from({ length: 20 }, (_, i) => ({ 
+  Automotive: Array.from({ length: 20 }, (_, i) => ({ 
     id: i + 1, 
     url: `/images/otomotif/auto${i + 1}.webp` 
   })),

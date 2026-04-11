@@ -17,8 +17,8 @@ const Footer = () => {
           
           {/* Bio Section */}
           <div className="lg:max-w-md space-y-6 text-center lg:text-left">
-            <h2 className="text-5xl md:text-6xl font-serif text-[#FFF8F0] tracking-tighter">
-              Je Creative<span className="text-[#DAC0A3]">.</span>
+            <h2 className="text-2xl md:text-2xl font-serif text-[#FFF8F0] uppercase tracking-tighter">
+              Je Creative<span className="text-[#DAC0A3] ">.</span>
             </h2>
             <p className="text-[#FFF8F0]/60 font-light leading-relaxed text-sm max-w-sm mx-auto lg:mx-0">
               Capturing the unique essence of every subject, from automotive to pets. Every shot is a timeless story.
@@ -70,9 +70,6 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="absolute left-1/2 -bottom-10 -translate-x-1/2 opacity-[0.03] pointer-events-none w-full text-center">
-        <h1 className="text-[25vw] font-serif text-[#FFF8F0] leading-none uppercase">Jeremy</h1>
-      </div>
     </footer>
   );
 };
