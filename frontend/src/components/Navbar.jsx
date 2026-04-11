@@ -7,12 +7,21 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const links = ["Home", "Gallery", "About", "Testimonials", "Contact"];
+  const links = ["Home", "About", "Gallery", "Testimonials", "Contact"];
 
   // Mencegah scroll saat menu mobile terbuka
   useEffect(() => {
@@ -21,10 +30,10 @@ const Navbar = () => {
   }, [isOpen]);
 
   return (
-    <nav className={`fixed w-full transition-all duration-500 z-1000 ${scrolled || isOpen ? 'bg-[#1A120B] py-4 shadow-2xl' : 'bg-transparent py-8'
+    <nav className={`fixed w-full z-1000 transition-[background-color,padding,box-shadow] duration-500 ${scrolled || isOpen ? 'bg-[#1A120B] py-4 shadow-2xl' : 'bg-transparent py-8'
       }`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="text-xl md:text-2xl font-serif tracking-[0.3em] text-[#DAC0A3] z-1001">Je Creative</a>
+        <a href="#" className="text-base md:text-base font-serif tracking-[0.3em] text-[#DAC0A3] z-1001">JE CREATIVE</a>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex gap-10">
@@ -49,18 +58,24 @@ const Navbar = () => {
             initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 bg-[#1A120B] flex flex-col items-center justify-center gap-8 md:hidden z-1000"
           >
             {links.map((link, i) => (
               <motion.a
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
+                whileHover={{ scale: 1.05, color: "#F8F0E5" }}
+                whileTap={{ scale: 0.95 }}
+                transition={{
+                  delay: i * 0.08,
+                  duration: 0.4,
+                  ease: "easeOut"
+                }}
                 key={link}
                 href={`#${link.toLowerCase()}`}
                 onClick={() => setIsOpen(false)}
-                className="text-3xl font-serif text-[#DAC0A3] active:italic"
+                className="text-xl font-serif text-[#DAC0A3] transition-colors"
               >
                 {link}
               </motion.a>

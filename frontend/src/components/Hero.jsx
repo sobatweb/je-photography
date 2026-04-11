@@ -1,23 +1,22 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Camera, MousePointer2, MoveDown } from "lucide-react";
 import { galleryData } from "../data/GalleryData";
 
-const HeroImage = ({ img, index }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
+const HeroImage = ({ img, index, isParentReady, onImageLoad }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 1.05 }}
-      animate={isLoaded ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.05 }}
+      initial={{ opacity: 0 }}
+      animate={isParentReady ? { opacity: 1 } : { opacity: 0 }}
       transition={{
-        duration: 1.2,
-        delay: index * 0.1, // Subtle stagger after load
-        ease: [0.22, 1, 0.36, 1]
+        duration: 0.8, // Faster duration
+        delay: index * 0.05, // Faster stagger
+        ease: "easeOut"
       }}
       style={{
-        willChange: "transform, opacity",
-        backfaceVisibility: "hidden"
+        willChange: "opacity",
+        backfaceVisibility: "hidden",
+        transform: "translateZ(0)"
       }}
       className={`relative overflow-hidden rounded-sm ${img.span}`}
     >
@@ -26,71 +25,85 @@ const HeroImage = ({ img, index }) => {
         alt={`Hero Collage ${index}`}
         loading="eager"
         decoding="async"
-        onLoad={() => setIsLoaded(true)}
-        fetchpriority={index < 3 ? "high" : "auto"}
-        className="w-full h-full object-cover transition-opacity duration-300"
+        onLoad={onImageLoad}
+        fetchpriority={index < 4 ? "high" : "auto"}
+        className="w-full h-full object-cover transition-opacity duration-500"
       />
     </motion.div>
   );
 };
 
 const Hero = () => {
+  const [loadedCount, setLoadedCount] = useState(0);
+  const [isReady, setIsReady] = useState(false);
+
   // Photos from public/images/hero photos/
   const collageImages = useMemo(() => [
-    { url: "/assets/Selected Photos/Je Carshoot/image06.webp", span: "md:col-span-2 md:row-span-2" },
-    { url: "/assets/Selected Photos/Je Portraiture/image20.webp", span: "md:col-span-1 md:row-span-1" },
-    { url: "/assets/Selected Photos/Je Petshoot/image07.webp", span: "md:col-span-1 md:row-span-2" },
-    { url: "/assets/Selected Photos/Je Carshoot/image01.webp", span: "md:col-span-1 md:row-span-1" },
-    { url: "/assets/Selected Photos/Je Portraiture/image17.webp", span: "md:col-span-2 md:row-span-1" },
-    { url: "/assets/Selected Photos/Je Petshoot/image08.webp", span: "md:col-span-1 md:row-span-1" },
-    { url: "/assets/Selected Photos/Je Cekrek/image01.webp", span: "md:col-span-1 md:row-span-1" },
-    { url: "/assets/Selected Photos/Je Cekrek/image18.webp", span: "md:col-span-1 md:row-span-1" },
-    { url: "/assets/Selected Photos/Je Petshoot/image11.webp", span: "md:col-span-1 md:row-span-1" },
-    { url: "/assets/Selected Photos/Je Portraiture/image04.webp", span: "md:col-span-2 md:row-span-1" },
+    { url: "/assets/hero images/carshoot/image06.webp", span: "md:col-span-2 md:row-span-2" },
+    { url: "/assets/hero images/portraiture/image20.webp", span: "md:col-span-1 md:row-span-1" },
+    { url: "/assets/hero images/petshoot/image07.webp", span: "md:col-span-1 md:row-span-2" },
+    { url: "/assets/hero images/carshoot/image01.webp", span: "md:col-span-1 md:row-span-1" },
+    { url: "/assets/hero images/portraiture/image17.webp", span: "md:col-span-2 md:row-span-1" },
+    { url: "/assets/hero images/petshoot/image08.webp", span: "md:col-span-1 md:row-span-1" },
+    { url: "/assets/hero images/cekrek/image01.webp", span: "md:col-span-1 md:row-span-1" },
+    { url: "/assets/hero images/cekrek/image18.webp", span: "md:col-span-1 md:row-span-1" },
+    { url: "/assets/hero images/petshoot/image11.webp", span: "md:col-span-1 md:row-span-1" },
+    { url: "/assets/hero images/portraiture/image04.webp", span: "md:col-span-2 md:row-span-1" },
   ], []);
+
+  const handleImageLoad = () => setLoadedCount(prev => prev + 1);
+
+  useEffect(() => {
+    // Reveal once at least 5 images are loaded (faster entry)
+    if (loadedCount >= Math.min(5, collageImages.length)) {
+      setIsReady(true);
+    }
+
+    // Safety timeout: 1.5s
+    const timeout = setTimeout(() => setIsReady(true), 1500);
+    return () => clearTimeout(timeout);
+  }, [loadedCount, collageImages.length]);
 
   return (
     <section id="home" className="relative min-h-screen w-full flex items-center justify-center bg-black overflow-hidden">
 
-      {/* 1. Background Collage Grid (Varied Sizes) */}
+      {/* 1. Background Collage Grid */}
       <div
         className="absolute inset-0 z-0 grid grid-cols-2 md:grid-cols-4 gap-2 opacity-80"
         style={{
-          perspective: "1000px",
-          transformStyle: "preserve-3d",
-          filter: "grayscale(1) contrast(1.1)"
+          transformStyle: "flat",
+          backfaceVisibility: "hidden",
+          contain: "paint"
         }}
       >
         {collageImages.map((img, index) => (
-          <HeroImage key={index} img={img} index={index} />
+          <HeroImage
+            key={index}
+            img={img}
+            index={index}
+            isParentReady={isReady}
+            onImageLoad={handleImageLoad}
+          />
         ))}
       </div>
 
-      {/* 2. Dark Overlay for readability (Stronger in the middle) */}
-      <div className="absolute inset-0 z-10 bg-black/25 bg-radial-gradient from-transparent to-black/90" />
-      <div className="absolute inset-0 z-10 bg-linear-to-b from-black/40 via-transparent to-black/40" />
+      {/* 2. Unified Dark Overlay (Removed radial vignette for cleaner corners) */}
+      <div 
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 50%, rgba(0,0,0,0.4) 100%)"
+        }}
+      />
 
       {/* 3. Main Content (Centered) */}
       <div className="container mx-auto z-20 px-6 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          style={{ willChange: "transform, opacity" }}
+          initial={{ opacity: 0 }}
+          animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
           className="max-w-4xl mx-auto space-y-6"
         >
-          {/* Top Label */}
-          <div className="flex items-center gap-4 justify-center">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              style={{ willChange: "transform" }}
-              className="w-7 h-7 rounded-full border border-[#DAC0A3]/30 flex items-center justify-center text-[#DAC0A3]"
-            >
-              <Camera size={12} />
-            </motion.div>
-            <span className="text-[#DAC0A3] text-[11px] uppercase tracking-[0.5em] font-bold">JE PHOTOGRAPHY</span>
-          </div>
+
 
           {/* Main Title */}
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif text-[#F8F0E5] leading-tight tracking-tighter">
@@ -104,13 +117,13 @@ const Hero = () => {
               href="#services"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative px-10 py-4 rounded-full bg-[#DAC0A3] text-black overflow-hidden transition-all shadow-[0_20px_40px_-10px_rgba(218,192,163,0.3)] cursor-pointer"
+              className="group relative px-8 py-3 md:px-10 md:py-4 rounded-full bg-[#DAC0A3] text-black overflow-hidden transition-all shadow-lg cursor-pointer"
             >
-              <span className="relative z-10 uppercase text-[11px] font-bold tracking-[0.2em] flex items-center gap-3 transition-colors group-hover:text-white font-sans">
+              <span className="relative z-10 uppercase text-[10px] md:text-[11px] font-bold tracking-[0.2em] flex items-center gap-3 transition-colors group-hover:text-white font-sans">
                 Explore Our Works <MousePointer2 size={14} />
               </span>
               {/* Efek Hover Fill */}
-              <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.22, 1, 0.36, 1]" />
+              <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </motion.a>
           </div>
         </motion.div>
@@ -118,9 +131,9 @@ const Hero = () => {
 
       {/* 4. Scrolling Indicator */}
       <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: [0, 1, 0], y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity, delay: 2 }}
+        initial={{ opacity: 0 }}
+        animate={isReady ? { opacity: [0, 1, 0], y: [0, 10, 0] } : { opacity: 0 }}
+        transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-[#DAC0A3]/50"
       >
         <span className="text-[9px] uppercase tracking-[0.5em]">Scroll</span>
