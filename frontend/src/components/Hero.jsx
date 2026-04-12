@@ -107,7 +107,7 @@ const Hero = () => {
 
           {/* Main Title */}
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif text-[#F8F0E5] leading-tight tracking-tighter">
-            CAPTURE <span className="text-[#b88a44] italic">THE SOUL</span><br />
+            CAPTURE <span className="text-[#ca913c] italic">THE SOUL</span><br />
             IN SILENCE
           </h1>
 
@@ -123,7 +123,7 @@ const Hero = () => {
                 Explore Our Works <MousePointer2 size={14} />
               </span>
               {/* Efek Hover Fill */}
-              <div className="absolute inset-0 bg-[#1a110a] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-[#c18a38] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </motion.a>
           </div>
         </motion.div>
