@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div>
-        
+
       <main className="bg-[#FDFBF7] overflow-x-hidden">
         <Navbar />
         <Hero />

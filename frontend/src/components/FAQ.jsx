@@ -9,7 +9,7 @@ const faqData = [
         answer: (
             <div className="space-y-3">
                 <p>Kami menyediakan 4 kategori utama layanan fotografi:</p>
-                <ul className="list-disc ml-5 space-y-1 text-[#DAC0A3]">
+                <ul className="list-disc ml-5 space-y-1 text-[#b88a44]">
                     <li>Food & Product</li>
                     <li>Pets</li>
                     <li>Automotive</li>
@@ -25,7 +25,7 @@ const faqData = [
         answer: (
             <div className="space-y-3">
                 <p>Ada. Setiap kategori memiliki Instagram tersendiri agar Anda bisa melihat portfolio yang lebih spesifik:</p>
-                <ul className="list-disc ml-5 space-y-1 text-[#DAC0A3]">
+                <ul className="list-disc ml-5 space-y-1 text-[#b88a44]">
                     <li>Food & Product : @Je_Cekrek</li>
                     <li>Pets : @Je_Petshoot</li>
                     <li>Automotive : @Je_Carshoot</li>
@@ -65,7 +65,7 @@ const faqData = [
         answer: (
             <div className="space-y-3">
                 <p>Lokasi fleksibel dan disesuaikan dengan kebutuhan:</p>
-                <ul className="list-disc ml-5 space-y-1 text-[#DAC0A3]">
+                <ul className="list-disc ml-5 space-y-1 text-[#b88a44]">
                     <li><span className="text-white font-semibold">Food & Product:</span> produk dapat dikirim atau photoshoot di lokasi Anda</li>
                     <li><span className="text-white font-semibold">Pets:</span> bisa indoor (studio) atau outdoor di area pet-friendly</li>
                     <li><span className="text-white font-semibold">Automotive:</span> outdoor di lokasi yang disepakati bersama</li>
@@ -95,13 +95,13 @@ const faqData = [
         answer: (
             <div className="space-y-3">
                 <p>Proses booking sebagai berikut:</p>
-                <ul className="list-disc ml-5 space-y-1 text-[#DAC0A3]">
+                <ul className="list-disc ml-5 space-y-1 text-[#b88a44]">
                     <li>Menghubungi admin untuk menentukan jadwal</li>
                     <li>Mengunci tanggal yang disepakati</li>
                     <li>Pembayaran DP sebesar Rp100.000</li>
                     <li>Tim fotografer akan hadir sesuai jadwal di lokasi</li>
                 </ul>
-                <p className="pt-2 text-[12px] italic text-[#DAC0A3]/80 border-t border-white/10">
+                <p className="pt-2 text-[12px] italic text-[#b88a44]/80 border-t border-white/10">
                     Catatan: DP akan hangus apabila terjadi pembatalan atau reschedule mendadak (maksimal H-3 dari hari pemotretan).
                 </p>
             </div>
@@ -112,25 +112,22 @@ const faqData = [
 const FAQItem = ({ question, answer, isOpen, onClick }) => {
     return (
         <div
-            className={`group rounded-[1.5rem] p-6 mb-4 transition-all duration-500 border flex flex-col ${
-                isOpen 
-                ? 'bg-black/40 border-[#8C5A3C] shadow-2xl shadow-black/40' 
-                : 'bg-black/20 border-white/5 hover:border-[#8C5A3C]/40 hover:bg-black/30'
-            }`}
+            className={`group rounded-[1.5rem] p-6 mb-4 transition-all duration-500 border flex flex-col ${isOpen
+                    ? 'bg-black/40 border-[#b88a44] shadow-2xl shadow-black/40'
+                    : 'bg-black/20 border-white/5 hover:border-[#b88a44]/40 hover:bg-black/30'
+                }`}
         >
             <div
                 className="flex justify-between items-center cursor-pointer min-h-[44px]"
                 onClick={onClick}
             >
-                <h3 className={`text-sm md:text-base font-bold transition-colors duration-300 pr-6 leading-tight ${
-                    isOpen ? 'text-white' : 'text-[#DAC0A3]/90 group-hover:text-white'
-                }`}>
+                <h3 className={`text-sm md:text-base font-bold transition-colors duration-300 pr-6 leading-tight ${isOpen ? 'text-white' : 'text-[#b88a44]/90 group-hover:text-white'
+                    }`}>
                     {question}
                 </h3>
                 <button
-                    className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500 ${
-                        isOpen ? 'bg-[#8C5A3C] text-white rotate-180' : 'bg-white/10 text-[#DAC0A3] group-hover:bg-[#8C5A3C]'
-                    }`}
+                    className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500 ${isOpen ? 'bg-[#b88a44] text-white rotate-180' : 'bg-white/10 text-[#b88a44] group-hover:bg-white'
+                        }`}
                 >
                     {isOpen ? <Minus size={14} /> : <Plus size={14} />}
                 </button>
@@ -146,7 +143,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
                         className="overflow-hidden"
                     >
                         <div className="pt-4 mt-4 border-t border-white/10">
-                            <div className="text-[#DAC0A3]/90 text-[13px] md:text-sm leading-relaxed">
+                            <div className="text-[#b88a44]/90 text-[13px] md:text-sm leading-relaxed">
                                 {answer}
                             </div>
                         </div>
@@ -164,39 +161,39 @@ const FAQ = () => {
     const rightColumn = faqData.slice(5, 10);
 
     return (
-        <section id="faq" className="py-24 md:py-32 bg-[#4B2E2B] relative px-6 overflow-hidden font-sans">
+        <section id="faq" className="py-24 md:py-32 bg-[#1a110a] relative px-6 overflow-hidden font-sans">
             {/* Glow effect yang lebih terang untuk memecah kepekatan background */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#8C5A3C]/20 blur-[150px] rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#b88a44]/20 blur-[150px] rounded-full -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-black/30 blur-[130px] rounded-full translate-y-1/2 -translate-x-1/2" />
-            
+
             <div className="container mx-auto max-w-6xl relative z-10">
                 <div className="text-center mb-20 space-y-4">
-                    <motion.div 
+                    <motion.div
                         className="flex items-center justify-center gap-3"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <span className="w-10 h-px bg-[#8C5A3C]"></span>
-                        <span className="text-[#DAC0A3] text-[11px] font-bold uppercase tracking-[0.5em]">
+                        <span className="w-10 h-px bg-[#b88a44]"></span>
+                        <span className="text-[#b88a44] text-[11px] font-bold uppercase tracking-[0.5em]">
                             Information Center
                         </span>
-                        <span className="w-10 h-px bg-[#8C5A3C]"></span>
+                        <span className="w-10 h-px bg-[#b88a44]"></span>
                     </motion.div>
-                    
-                    <motion.h2 
+
+                    <motion.h2
                         className="text-4xl md:text-5xl lg:text-6xl font-serif text-white leading-[1.1]"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
                     >
-                        Frequently Asked <span className="italic text-[#DAC0A3]">Questions.</span>
+                        Frequently Asked <span className="italic text-[#b88a44]">Questions.</span>
                     </motion.h2>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 items-start">
-                    <motion.div 
+                    <motion.div
                         className="flex flex-col"
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -214,7 +211,7 @@ const FAQ = () => {
                         ))}
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         className="flex flex-col"
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}

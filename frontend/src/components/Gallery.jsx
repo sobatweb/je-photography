@@ -7,7 +7,7 @@ const categories = Object.keys(galleryData);
 
 const bgConfig = {
   Food: { bg: "bg-[#FFF8F0]", accent: "text-[#803D3B]", label: "Culinary Art" },
-  Event: { bg: "bg-[#F8F9FA]", accent: "text-[#1A120B]", label: "Life Moments" },
+  Event: { bg: "bg-[#F8F9FA]", accent: "text-[#1a110a]", label: "Life Moments" },
   Automotive: { bg: "bg-[#FFF8F0]", accent: "text-[#333333]", label: "Engine & Soul" },
   Pet: { bg: "bg-[#F8F9FA]", accent: "text-[#4A5D4A]", label: "Pure Loyalties" }
 };
@@ -26,7 +26,7 @@ const PhotoCard = memo(({ url, alt, priority }) => {
           observer.disconnect();
         }
       },
-      { rootMargin: '200px' } 
+      { rootMargin: '200px' }
     );
 
     if (cardRef.current) observer.observe(cardRef.current);
@@ -34,15 +34,15 @@ const PhotoCard = memo(({ url, alt, priority }) => {
   }, []);
 
   return (
-    <div 
+    <div
       ref={cardRef}
       className="aspect-square overflow-hidden rounded-3xl md:rounded-4xl bg-neutral-200 shadow-sm group relative transform-gpu"
     >
       {isInView && (
-        <motion.img 
+        <motion.img
           initial={{ opacity: 0 }}
           animate={{ opacity: isLoaded ? 1 : 0 }}
-          src={url} 
+          src={url}
           alt={alt}
           decoding="async"
           onLoad={() => setIsLoaded(true)}
@@ -73,7 +73,7 @@ const Gallery = () => {
       else if (category.includes("Event")) category = "Event";
       else if (category.includes("Automotive")) category = "Automotive";
       else if (category.includes("Pet")) category = "Pet";
-      
+
       if (categories.includes(category)) {
         setActive(category);
       }
@@ -89,24 +89,23 @@ const Gallery = () => {
   return (
     <section ref={sectionRef} id="gallery" className={`py-20 md:py-32 transition-colors duration-700 px-6 relative overflow-hidden ${bgConfig[active].bg}`}>
       <div ref={galleryTopRef} className="absolute top-0" /> {/* Anchor untuk scroll */}
-      
+
       <div className="container mx-auto relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 gap-8">
           <div className="text-center md:text-left">
-            <h2 className="text-5xl md:text-7xl font-serif text-[#1A120B]">The <span className="italic">Visuals.</span></h2>
+            <h2 className="text-5xl md:text-7xl font-serif text-[#1a110a]">The <span className="italic">Visuals.</span></h2>
           </div>
 
-          <div className="w-full md:w-auto bg-[#1A120B]/5 p-2 rounded-3xl md:rounded-4xl border border-[#1A120B]/10 backdrop-blur-sm">
+          <div className="w-full md:w-auto bg-[#1a110a]/5 p-2 rounded-3xl md:rounded-4xl border border-[#1a110a]/10 backdrop-blur-sm">
             <div className="grid grid-cols-2 gap-2 md:flex md:flex-row md:items-center">
               {categories.map(cat => (
-                <button 
-                  key={cat} 
+                <button
+                  key={cat}
                   onClick={() => setActive(cat)}
-                  className={`px-4 py-3 md:px-8 md:py-4 rounded-2xl md:rounded-3xl text-[9px] md:text-[10px] uppercase tracking-widest font-black transition-all border-2 w-full md:w-auto ${
-                    active === cat 
-                    ? 'bg-[#1A120B] text-[#DAC0A3] border-[#DAC0A3]' 
-                    : 'bg-white text-[#1A120B]/40 border-white'
-                  }`}
+                  className={`px-4 py-3 md:px-8 md:py-4 rounded-2xl md:rounded-3xl text-[9px] md:text-[10px] uppercase tracking-widest font-black transition-all border-2 w-full md:w-auto ${active === cat
+                      ? 'bg-[#1a110a] text-[#b88a44] border-[#b88a44]'
+                      : 'bg-white text-[#1a110a]/40 border-white'
+                    }`}
                 >
                   {cat}
                 </button>
@@ -118,9 +117,9 @@ const Gallery = () => {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
           <AnimatePresence mode="popLayout">
             {displayPhotos.map((photo, index) => (
-              <PhotoCard 
-                key={`${active}-${photo.id}`} 
-                url={photo.url} 
+              <PhotoCard
+                key={`${active}-${photo.id}`}
+                url={photo.url}
                 alt={active}
                 priority={index < 4}
               />
@@ -130,20 +129,20 @@ const Gallery = () => {
 
         <div className="mt-12 flex flex-col items-center gap-4">
           {hasMore ? (
-            <button 
+            <button
               onClick={() => setDisplayLimit(prev => prev + 8)}
-              className="flex items-center gap-2 px-8 py-3 bg-white border-2 border-[#8C5A3C] text-[#8C5A3C] rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[#8C5A3C] hover:text-white transition-all shadow-sm"
+              className="flex items-center gap-2 px-8 py-3 bg-white border-2 border-[#b88a44] text-[#b88a44] rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[#b88a44] hover:text-[#1a110a] transition-all shadow-sm"
             >
               See More Works
               <ChevronDown size={16} />
             </button>
           ) : (
-            <button 
+            <button
               onClick={() => {
                 setDisplayLimit(8);
                 galleryTopRef.current?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="flex items-center gap-2 px-8 py-3 bg-[#8C5A3C] text-white rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[#4B2E2B] transition-all shadow-md"
+              className="flex items-center gap-2 px-8 py-3 bg-[#b88a44] text-[#1a110a] rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[#1a110a] hover:text-[#b88a44] transition-all shadow-md"
             >
               See Less
               <ChevronUp size={16} />

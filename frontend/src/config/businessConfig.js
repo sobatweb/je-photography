@@ -8,8 +8,8 @@ export const businessConfig = {
     address: "Senopati, Jakarta Selatan",
   },
   colors: {
-    primary: "#1A120B",    // Deep Espresso
-    accent: "#DAC0A3",     // Muted Gold/Nude
+    primary: "#1a110a",    // Deep Espresso
+    accent: "#b88a44",     // Muted Gold/Nude
     bgLight: "#FAF8F5",    // Soft Cream
   }
 };

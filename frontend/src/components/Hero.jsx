@@ -65,7 +65,7 @@ const Hero = () => {
   }, [loadedCount, collageImages.length]);
 
   return (
-    <section id="home" className="relative min-h-screen w-full flex items-center justify-center bg-black overflow-hidden">
+    <section id="home" className="relative min-h-screen w-full flex items-center justify-center bg-[#1a110a] overflow-hidden">
 
       {/* 1. Background Collage Grid */}
       <div
@@ -88,7 +88,7 @@ const Hero = () => {
       </div>
 
       {/* 2. Unified Dark Overlay (Removed radial vignette for cleaner corners) */}
-      <div 
+      <div
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
           background: "linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 50%, rgba(0,0,0,0.4) 100%)"
@@ -107,7 +107,7 @@ const Hero = () => {
 
           {/* Main Title */}
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif text-[#F8F0E5] leading-tight tracking-tighter">
-            CAPTURE <span className="text-[#DAC0A3] italic">THE SOUL</span><br />
+            CAPTURE <span className="text-[#b88a44] italic">THE SOUL</span><br />
             IN SILENCE
           </h1>
 
@@ -117,13 +117,13 @@ const Hero = () => {
               href="#services"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative px-8 py-3 md:px-10 md:py-4 rounded-full bg-[#DAC0A3] text-black overflow-hidden transition-all shadow-lg cursor-pointer"
+              className="group relative px-8 py-3 md:px-10 md:py-4 rounded-full bg-[#b88a44] text-[#1a110a] overflow-hidden transition-all shadow-lg cursor-pointer"
             >
-              <span className="relative z-10 uppercase text-[8px] md:text-[10px] font-bold tracking-[0.2em] flex items-center gap-3 transition-colors group-hover:text-white font-sans">
+              <span className="relative z-10 uppercase text-[8px] md:text-[10px] font-bold tracking-[0.2em] flex items-center gap-3 transition-colors group-hover:text-[#F8F0E5] font-sans">
                 Explore Our Works <MousePointer2 size={14} />
               </span>
               {/* Efek Hover Fill */}
-              <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-[#1a110a] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </motion.a>
           </div>
         </motion.div>
@@ -134,7 +134,7 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={isReady ? { opacity: [0, 1, 0], y: [0, 10, 0] } : { opacity: 0 }}
         transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-[#DAC0A3]/50"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-[#b88a44]/50"
       >
         <span className="text-[9px] uppercase tracking-[0.5em]">Scroll</span>
         <MoveDown size={14} strokeWidth={1} />
