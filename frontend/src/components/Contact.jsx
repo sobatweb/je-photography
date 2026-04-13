@@ -83,7 +83,7 @@ const Contact = () => {
               </div>
 
               <motion.a
-                href={businessConfig?.contact?.whatsapp || "https://wa.me/123456789"}
+                href={businessConfig?.contact?.whatsapp || "https://wa.me/6287751330478"}
                 target="_blank"
                 rel="noreferrer"
                 whileHover={{ scale: 1.03 }}
