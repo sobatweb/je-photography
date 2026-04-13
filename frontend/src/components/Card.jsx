@@ -73,7 +73,7 @@ const SimpleCard = ({ card, index }) => {
       className="h-full flex flex-col relative group pt-12 md:pt-16"
     >
       {/* Container Card: Warna sama dengan BG (#1a110a) */}
-      {/* PERUBAHAN: border-2 dan shadow-gold yang lebih tebal/luas */}
+   
       <div className="relative z-10 bg-[#1a110a] rounded-[2.5rem] p-4 flex flex-col h-full overflow-hidden transition-all duration-500
                       border-2 border-[#b88a44]/40 
                       shadow-[0_0_40px_-10px_rgba(184,138,68,0.3)]

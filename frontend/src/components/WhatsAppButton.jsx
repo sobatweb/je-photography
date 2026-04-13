@@ -4,7 +4,7 @@ import { MessageCircle } from 'lucide-react';
 import { businessConfig } from '../config/businessConfig';
 
 const WhatsAppButton = () => {
-  // Format pesan otomatis: "Halo Je Creative, saya ingin bertanya tentang layanan fotografi..."
+  
   const defaultMessage = encodeURIComponent(
     "Halo Je Creative, saya ingin bertanya mengenai layanan fotografi dan konsultasi konsep."
   );

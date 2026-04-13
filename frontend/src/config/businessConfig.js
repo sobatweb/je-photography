@@ -8,8 +8,8 @@ export const businessConfig = {
     address: "Jakarta",
   },
   colors: {
-    primary: "#1a110a",    // Deep Espresso
-    accent: "#b88a44",     // Muted Gold/Nude
-    bgLight: "#FAF8F5",    // Soft Cream
+    primary: "#1a110a",   
+    accent: "#b88a44",     
+    bgLight: "#FAF8F5",    
   }
 };

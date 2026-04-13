@@ -87,7 +87,7 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* 2. Unified Dark Overlay (Removed radial vignette for cleaner corners) */}
+      {/* 2. Unified Dark Overlay  */}
       <div
         className="absolute inset-0 z-10 pointer-events-none"
         style={{

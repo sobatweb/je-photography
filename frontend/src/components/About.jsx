@@ -17,7 +17,7 @@ const About = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            {/* Perbaikan typo aspect-4/5 menjadi aspect-[4/5] */}
+           
             <div className="rounded-t-[10rem] rounded-b-[3rem] overflow-hidden aspect-4/5 shadow-2xl relative z-10">
               <img
                 src={poto}
@@ -39,7 +39,7 @@ const About = () => {
               <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] mt-2 text-center opacity-90">Years of<br />Experience</p>
             </motion.div>
 
-            {/* Aksen Background (Perbaikan rounded-b-4xl menjadi rounded-b-[2rem]) */}
+            {/* Aksen Background */}
             <div className="absolute -top-6 -left-6 w-32 h-32 border border-[#b88a44] rounded-t-[5rem] rounded-b-4xl opacity-40 -z-10"></div>
           </motion.div>
 
@@ -70,7 +70,7 @@ const About = () => {
                 Photography has been more than just a profession—it is a craft I continuously refine. With over a decade of dedicated experience, I have developed a strong visual perspective and attention to detail in every frame.
               </p>
               <p>
-                {/* Update teks klien dan brand di sini */}
+             
                 Over the years, I have worked with <strong>around 1500+ clients</strong> and <strong>around 800+ brands</strong> across various industries, delivering imagery that not only captures moments but elevates them into compelling visual stories. To ensure a focused and refined approach, my services are curated into four specialized divisions:
               </p>
 
